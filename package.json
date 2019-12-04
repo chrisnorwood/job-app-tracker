@@ -1,0 +1,8 @@
+{
+  "name": "job-app-tracker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Chris Norwood <cnorwood92@gmail.com>",
+  "license": "MIT",
+  "dependencies": {}
+}
