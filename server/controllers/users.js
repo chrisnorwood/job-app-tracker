@@ -1,6 +1,6 @@
 const models = require('../db/models');
 
-const getAllApplications = async (req, res, next) => {
+const createUser = async (req, res, next) => {
   try {
     const applications = await models.Application.findAll();
     return res.status(200).json({
@@ -12,5 +12,5 @@ const getAllApplications = async (req, res, next) => {
 }
 
 module.exports = {
-  getAllApplications,
+  createUser,
 }
