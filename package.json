@@ -5,7 +5,9 @@
   "author": "Chris Norwood <cnorwood92@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev-server": "node-dev server/index.js"
+    "dev": "concurrently --kill-others -c cyan,magenta \"yarn run dev-server\" \"yarn run dev-client\"",
+    "dev-server": "node-dev server/index.js",
+    "dev-client": "yarn --cwd ./client run start"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
