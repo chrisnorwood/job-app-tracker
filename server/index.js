@@ -12,10 +12,6 @@ app.use(helmet());
 app.use(express.json());
 app.use(morgan('tiny'));
 
-app.get('/health', (req, res, next) => {
-  res.status(200).json({ status: 'OK!'});
-});
-
 app.use('/api', routes);
 
 app.listen(port, () => {
