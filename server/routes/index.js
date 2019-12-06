@@ -2,7 +2,7 @@
 const { Router } = require('express');
 const { authenticateRequest } = require('../middleware/auth');
 const authController = require('../controllers/auth');
-const applicationsController = require('../controllers/applications');
+const applicationController = require('../controllers/application');
 
 const router = Router();
 
@@ -13,6 +13,7 @@ router.post('/auth/register', authController.register);
 router.post('/auth/login', authController.login);
 
 // Applications
-router.get('/applications', authenticateRequest, applicationsController.getAllApplications);
+router.get('/applications', authenticateRequest, applicationController.getAllApplications);
+router.post('/applications', authenticateRequest, applicationController.postApplication);
 
 module.exports = router;
