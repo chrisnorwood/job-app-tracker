@@ -28,10 +28,7 @@ fs
   });
 
 Object.keys(db).forEach(modelName => {
-  console.log('modelName (key on this object) in Loop: ' + modelName);
-  console.log('db[modelname] (value of the item this object) in Loop: ' + db[modelName]);
   if (db[modelName].associate) {
-    console.log('model w/ association: ' + db[modelName]);
     db[modelName].associate(db);
   }
 });
