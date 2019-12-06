@@ -30,7 +30,24 @@ const getAllApplications = async (req, res, next) => {
   }
 }
 
+const deleteApplication = async (req, res, next) => {
+  try {
+    const result = await applicationService.destroy(req.params.id, req.user.id)  
+    
+    if (result === 0)
+      throw new Error(`Cannot delete that record`);
+
+    return res.status(200).json({
+      message: 'Successfully deleted application.',
+      id: req.params.id,
+    });
+  } catch (error) {
+    return res.status(422).json({ message: error.message });
+  }
+}
+
 module.exports = {
   postApplication,
   getAllApplications,
+  deleteApplication,
 }
