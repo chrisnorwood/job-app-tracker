@@ -36,6 +36,7 @@ const updateApplication = async (req, res, next) => {
     if (!application)
       throw new Error(`Request must include a valid 'application' field`);
     
+    // The following destructuring, with the returned record ONLY works with Postgres Databases
     const [queryStatus, [updatedApplication] ] = await applicationService.update(req.params.id, req.user.id, application);
 
     if (queryStatus === 0)
