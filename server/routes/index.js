@@ -15,6 +15,7 @@ router.post('/auth/login', authController.login);
 // Applications
 router.get('/applications', authenticateRequest, applicationController.getAllApplications);
 router.post('/applications', authenticateRequest, applicationController.postApplication);
+router.put('/applications/:id', authenticateRequest, applicationController.updateApplication);
 router.delete('/applications/:id', authenticateRequest, applicationController.deleteApplication);
 
 module.exports = router;

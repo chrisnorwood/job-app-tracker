@@ -30,6 +30,26 @@ const getAllApplications = async (req, res, next) => {
   }
 }
 
+const updateApplication = async (req, res, next) => {
+  try {
+    const { application } = req.body;
+    if (!application)
+      throw new Error(`Request must include a valid 'application' field`);
+    
+    const [queryStatus, [updatedApplication] ] = await applicationService.update(req.params.id, req.user.id, application);
+
+    if (queryStatus === 0)
+      throw new Error(`Cannot update that record`);
+
+    return res.status(200).json({
+      message: 'Successfully updated application.',
+      application: updatedApplication,
+    });
+  } catch (error) {
+    return res.status(422).json({ message: error.message });
+  }
+}
+
 const deleteApplication = async (req, res, next) => {
   try {
     const result = await applicationService.destroy(req.params.id, req.user.id)  
@@ -49,5 +69,6 @@ const deleteApplication = async (req, res, next) => {
 module.exports = {
   postApplication,
   getAllApplications,
+  updateApplication,
   deleteApplication,
 }
