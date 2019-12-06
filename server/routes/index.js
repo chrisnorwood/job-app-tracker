@@ -1,5 +1,6 @@
 // All routes in here are namespaced as /api/... in server index
 const { Router } = require('express');
+const { authenticateRequest } = require('../middleware/auth');
 const authController = require('../controllers/auth');
 const applicationsController = require('../controllers/applications');
 
@@ -12,6 +13,6 @@ router.post('/auth/register', authController.register);
 router.post('/auth/login', authController.login);
 
 // Applications
-router.get('/applications', applicationsController.getAllApplications);
+router.get('/applications', authenticateRequest, applicationsController.getAllApplications);
 
 module.exports = router;
