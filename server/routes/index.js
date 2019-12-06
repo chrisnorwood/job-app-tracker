@@ -9,7 +9,7 @@ router.get('/', (req, res, next) => res.status(200).json({ status: 'OK!'}));
 
 // Authentication & User Signup, Login, etc.
 router.post('/auth/register', authController.register);
-router.get('/auth/login', authController.login);
+router.post('/auth/login', authController.login);
 
 // Applications
 router.get('/applications', applicationsController.getAllApplications);

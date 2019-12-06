@@ -7,6 +7,7 @@
   * `createdb job_app_tracker_test -U <db_username>`
 3. create `.env` file in project root, with variables DEV_DATABASE_URL, TEST_DATABASE_URL, such as seen in `.env.example`
   * Heroku will create the DATABASE_URL environment variable for production postgres DB
+4. add a JWT secret key to `.env`
 
 ## Notes:
 * do not use the @babel/node library in production, see https://babeljs.io/docs/en/babel-node for prod. usage
