@@ -20,12 +20,13 @@ const login = async (req, res, next) => {
 
 const register = async (req, res, next) => {
   try {
-    const { email, password } = req.body;
-    if (!email || !password) throw new Error('Invalid credentials.');
+    const { email, password, passwordConf } = req.body;
+    if (!email || !password || !passwordConf) throw new Error('Invalid credentials.');
+    if (password !== passwordConf) throw new Error('Password must match confirmation.');
 
     const userExists = await userService.getUserByEmail(email || '');
     if (userExists) {
-      return res.status(422).send({ message: "User already exists with this email address." })
+      throw new Error("User already exists with this email address.");
     }
 
     const passwordDigest = await authService.hashPassword(password);
