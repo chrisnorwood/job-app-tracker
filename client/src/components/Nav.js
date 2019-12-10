@@ -1,13 +1,17 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Nav = (props) => (
-  <>
-    <ul>
-      <li>Some</li>
-      <li>Navigation</li>
-      <li>Here</li>
-    </ul>
-  </>
+  <nav>
+    <div className='container'>
+      <h3>Job App. Tracker</h3>
+      <ul>
+        <li>
+          <NavLink to='/login'>Login</NavLink>
+        </li>
+      </ul>
+    </div>
+  </nav>
 )
 
 export default Nav

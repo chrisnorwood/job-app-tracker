@@ -9,23 +9,21 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Apps from './pages/Apps'
 
-function App() {
-  return (
-    <div style={{ margin: '0 auto', maxWidth: '1000px' }}>
-      <AuthProvider value={false}>
-        <Nav />
-        <Router>
-          <Switch>
-            <PublicRoute path='/' exact restricted={false} component={Index} />
-            <PublicRoute path='/login' restricted={true} component={Login} />
-            <PublicRoute path='/signup' restricted={true} component={Signup} />
-            <PrivateRoute path='/apps' component={Apps} />
-            <Route render={() => <h1>404</h1>}/>
-          </Switch>
-        </Router>
-      </AuthProvider>
-    </div>
-  )
-}
+const App = () => (
+  <AuthProvider value={false}>
+    <Router>
+      <Nav />
+      <div className='container'>
+        <Switch>
+          <PublicRoute path='/' exact restricted={false} component={Index} />
+          <PublicRoute path='/login' restricted={true} component={Login} />
+          <PublicRoute path='/signup' restricted={true} component={Signup} />
+          <PrivateRoute path='/apps' component={Apps} />
+          <Route render={() => <h1>404</h1>}/>
+        </Switch>
+      </div>
+    </Router>
+  </AuthProvider>
+)
 
 export default App
