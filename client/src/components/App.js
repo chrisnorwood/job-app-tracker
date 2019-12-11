@@ -1,9 +1,10 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 import { AuthProvider } from '../contexts/AuthContext'
 import PublicRoute from './hoc/PublicRoute'
 import PrivateRoute from './hoc/PrivateRoute'
-import Nav from './Nav'
+import Nav from './layout/Nav'
 import Index from './pages/Index'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
@@ -23,6 +24,7 @@ const App = () => (
         </Switch>
       </div>
     </Router>
+    <ToastContainer autoClose={3000} />
   </AuthProvider>
 )
 
