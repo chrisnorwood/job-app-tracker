@@ -127,6 +127,7 @@ input:focus {
 nav {
   width: 100%;
   color: $primary-dark;
+  border-bottom: 1px solid $primary-lt;
   margin-bottom: 2rem;
   .container {
     display: flex;
@@ -136,6 +137,9 @@ nav {
     h2 {
       padding: 2rem 1rem;
       font-weight: bold;
+      @media screen and (max-width: 630px) {
+        font-size: 0.8em;
+      }
     }
     ul {
       list-style: none;
@@ -143,6 +147,9 @@ nav {
       li {
         display: inline-flex;
         margin-left: 2rem;
+        @media screen and (max-width: 700px) {
+          font-size: 0.8em;
+        }
         a {
           background: $primary-lt;
           border: 1px solid transparent;

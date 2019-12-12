@@ -8,10 +8,8 @@ const Login = ({ history }) => {
   const { register, handleSubmit, errors } = useForm()
 
   const onSubmit = async data => {
-    console.log('Form submitted with: ', data)
     try {
       const loginResponse = await handleLogin(data)
-      console.log('success in login: ', loginResponse)
       dispatch({
         type: 'LOGIN',
         payload: loginResponse,

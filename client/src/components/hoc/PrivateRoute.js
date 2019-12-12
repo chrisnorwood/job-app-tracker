@@ -12,7 +12,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     // Otherwise redirect to /login
     <Route {...rest} render={props => (
       !authState.isAuthenticated && !token
-        ? toast.warn('You must be logged in to view that page.', { position: 'top-center'}) && <Redirect to='/login' />
+        ? toast.warn('You must be logged in to view that page.', { position: 'bottom-right'}) && <Redirect to='/login' />
         : <Component {...props} />
     )}/>
   )

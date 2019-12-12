@@ -7,7 +7,7 @@ const Logout = ({ history }) => {
 
   useEffect(() => {
     dispatch({ type: "LOGOUT" })
-    toast.success('Logged out.', { position: 'top-center' })
+    toast.success('Logged out.', { position: 'bottom-right' })
     history.push('/')
   }, [history, dispatch])
 

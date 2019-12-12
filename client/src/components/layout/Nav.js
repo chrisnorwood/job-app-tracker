@@ -13,13 +13,23 @@ const Nav = (props) => {
       </h2>
       <ul>
         { authState.isAuthenticated ? (
-          <li>
-            <NavLink to='/logout'>Logout</NavLink>
-          </li>
+          <>
+            <li>
+              <NavLink to='/apps'>My Apps</NavLink>
+            </li>
+            <li>
+              <NavLink to='/logout'>Logout</NavLink>
+            </li>
+          </>
         ) : (
-        <li>
-          <NavLink to='/login'>Login</NavLink>
-        </li>
+          <>
+            <li>
+              <NavLink to='/signup'>Signup</NavLink>
+            </li>
+            <li>
+              <NavLink to='/login'>Login</NavLink>
+            </li>
+          </>
         )}
       </ul>
     </div>
