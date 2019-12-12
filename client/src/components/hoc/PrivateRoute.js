@@ -5,12 +5,13 @@ import { useAuth } from '../../contexts/AuthContext'
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { authState } = useAuth()
+  const token = localStorage.getItem('token')
 
   return (
     // Show the component only when the user is logged in
     // Otherwise redirect to /login
     <Route {...rest} render={props => (
-      !authState.isAuthenticated
+      !authState.isAuthenticated && !token
         ? toast.warn('You must be logged in to view that page.', { position: 'top-center'}) && <Redirect to='/login' />
         : <Component {...props} />
     )}/>

@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useReducer } from 'react'
+import React, { createContext, useContext, useReducer, useEffect } from 'react'
+import { getUser } from '../services/api'
 
 const AuthContext = createContext()
 
@@ -12,7 +13,7 @@ const initialAuthState = {
 const authReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
-      localStorage.setItem("auth", { token: action.payload.token, user: action.payload.user })
+      localStorage.setItem("token", action.payload.token)
       return {
         ...state,
         isAuthenticated: true,
@@ -34,6 +35,27 @@ const authReducer = (state, action) => {
 
 export const AuthProvider = ({ children }) => {
   const [authState, dispatch] = useReducer(authReducer, initialAuthState)
+
+  useEffect(() => {
+    // Check if auth token already exists
+    const token = localStorage.getItem('token')
+    if (token) {
+      // Log user in
+      getUser().then(userResponse => {
+        // Put user in application state
+        dispatch({
+          type: "LOGIN",
+          payload: {
+            user: userResponse.user,
+            token,
+          }
+        })
+      }).catch(error => {
+        // Log user out if the token was bad/outdated
+        dispatch({ type: "LOGOUT" })
+      });
+    }
+  }, [dispatch])
 
   return (
     <AuthContext.Provider
