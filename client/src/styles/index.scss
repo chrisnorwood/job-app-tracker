@@ -164,6 +164,9 @@ nav {
           &:hover {
             border: 1px solid $primary;
           }
+          &.active {
+            border: 1px solid $primary;
+          }
         }
       }
     }

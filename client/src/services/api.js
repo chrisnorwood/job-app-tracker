@@ -12,14 +12,12 @@ export const profileUrl = `${baseUrl}/users/current`
 export const loginUser = async (userObject) => {
   // Takes userObject in format: { email, password }
   const result = await ky.post(loginUrl, { json: userObject }).then(res => res.json())
-
   return result
 }
 
 export const signupUser = async (userObject) => {
   // Takes userObject in format: { email, password, passwordConf }
   const result = await ky.post(signupUrl, { json: userObject }).then(res => res.json())
-
   return result
 }
 
@@ -27,7 +25,14 @@ export const signupUser = async (userObject) => {
 // User Profile
 export const getUser = async () => {
   const result = await ky.get(profileUrl, createHeaders()).then(res => res.json())
+  return result
+}
 
+// Applications
+export const getApplications = async () => {
+  const result = await ky.get(appsUrl, createHeaders())
+    .then(res => res.json())
+    .then(json => json.applications)
   return result
 }
 
