@@ -1,12 +1,25 @@
 import React from 'react'
 import useForm from 'react-hook-form'
+import { useAuth } from '../../contexts/AuthContext'
 import { handleLogin } from '../../services/auth'
 
-const Login = (props) => {
+const Login = ({ history }) => {
+  const { dispatch } = useAuth()
   const { register, handleSubmit, errors } = useForm()
-  const onSubmit = data => {
+
+  const onSubmit = async data => {
     console.log('Form submitted with: ', data)
-    handleLogin(data)
+    try {
+      const loginResponse = await handleLogin(data)
+      console.log('success in login: ', loginResponse)
+      dispatch({
+        type: 'LOGIN',
+        payload: loginResponse,
+      })
+      history.push('/apps')
+    } catch (error) {
+      // Do nothing, handled in auth service
+    }
   }
 
   return (
