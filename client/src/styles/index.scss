@@ -1,12 +1,33 @@
-/* Variables
+/* Variables & Mixins
   see palette: https://palx.jxnblk.com/
 */
 
-$seaweed: #087F8C;
+$black: #1D253B;
+$primary: #525CE5;
+$primary-dark: #17307A; /* most text */
+$primary-lt: #EBECFC;
+$orange: #FFA60A;
+$orange-lt: #FFF6E9;
+$bg: #F5F7FD;
+$bg-dark: #B8BFD4;
+
+$red-dark: #FF6768;
+$red-lt: #FFE9E8;
+$green-dark: #57D094;
+$green-lt: #E6F8EE;
+
 $cyan-6: #5cacb3;
 $gray-0: #f9f9f9;
 $gray-3: #d0d4d4;
 $gray-6: #99a1a2;
+
+@mixin shadow($level: 1) {
+  @if $level == 1 {box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);} 
+  @else if $level == 2 {box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);}
+  @else if $level == 3 {box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);}
+  @else if $level == 4 {box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);}
+  @else if $level == 5 {box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);}
+}
 
 /* Styles */
 
@@ -27,13 +48,60 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: $gray-0;
+  background: $bg;
+  color: $primary-dark;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+// Forms
+
+input {
+  padding: 0.25rem;
+  font-size: 1.2rem;
+  border: 0;
+  border-bottom: 1px solid $primary-lt;
+}
+
+input:focus {
+  outline: 0;
+  border-bottom: 1px solid $primary-dark;
+}
+
+.form-field {
+  margin: 2rem 0;
+  &:first-of-type {
+    margin-top: 0.5rem;
+  }
+  label {
+    display: block;
+    margin-left: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+  }
+  input {
+    width: 100%;
+  }
+}
+
+.submit-btn {
+  padding: 1rem 0.6rem;
+  font-size: 1rem;
+  font-weight: 600;
+  width: 100%;
+  text-transform: uppercase;
+  color: white;
+  background: $primary;
+  border: 0;
+  &:hover {
+    background: $primary-dark;
+  }
+}
+
+// End Forms
 
 .container {
   margin: 0px auto;
@@ -42,9 +110,9 @@ code {
 
 nav {
   width: 100%;
-  background-color: $seaweed;
+  background-color: $primary;
   color: $gray-0;
-
+  margin-bottom: 2rem;
   .container {
     display: flex;
     justify-content: space-between;
@@ -66,10 +134,23 @@ nav {
             color: inherit;
           }
           &:hover {
-            font-style: italic;
+            text-decoration: underline;
           }
         }
       }
     }
+  }
+}
+
+.auth-box {
+  max-width: 400px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  h3 {
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid $primary-lt;
   }
 }

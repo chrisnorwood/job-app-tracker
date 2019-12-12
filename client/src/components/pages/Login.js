@@ -14,22 +14,21 @@ const Login = (props) => {
   }
 
   return (
-    <>
-      <h1>Login</h1>
+    <div className='auth-box'>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>email:</label>
-          <input type="text" name="email" placeholder="Email" />
+        <div className='form-field'>
+          <label>Email</label>
+          <input type="text" name="email" placeholder="foo@bar.com" />
+        </div>
+        <div className='form-field'>
+          <label>Password</label>
+          <input type="password" name="password" placeholder="foobar" />
         </div>
         <div>
-          <label>password:</label>
-          <input type="password" name="password" placeholder="Password" />
-        </div>
-        <div>
-          <input type="submit" value="Login" />
+          <input type="submit" value="Login" className="submit-btn"/>
         </div>
       </form>
-    </>
+    </div>
   )
 }
 
