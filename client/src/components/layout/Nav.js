@@ -1,10 +1,12 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 const Nav = (props) => (
   <nav>
     <div className='container'>
-      <h3>Job App. Tracker</h3>
+      <h2>
+        <Link to='/'>Job Application Tracker</Link>
+      </h2>
       <ul>
         <li>
           <NavLink to='/login'>Login</NavLink>

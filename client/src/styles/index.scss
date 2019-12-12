@@ -1,3 +1,5 @@
+@import "reset";
+
 /* Variables & Mixins
   see palette: https://palx.jxnblk.com/
 */
@@ -50,6 +52,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: $bg;
   color: $primary-dark;
+}
+
+a {
+  text-decoration: none;
+  &:visited {
+    color: inherit;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h2 {
+  font-size: 1.5rem;
 }
 
 code {
@@ -110,16 +126,16 @@ input:focus {
 
 nav {
   width: 100%;
-  background-color: $primary;
-  color: $gray-0;
+  color: $primary-dark;
   margin-bottom: 2rem;
   .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
-    h3 {
-      padding: 1rem 1rem;
+    h2 {
+      padding: 2rem 1rem;
+      font-weight: bold;
     }
     ul {
       list-style: none;
@@ -128,13 +144,18 @@ nav {
         display: inline-flex;
         margin-left: 2rem;
         a {
+          background: $primary-lt;
+          border: 1px solid transparent;
+          text-transform: uppercase;
+          border-radius: 4px;
+          padding: 1rem;
           text-decoration: none;
           font-weight: bold;
           &:visited {
             color: inherit;
           }
           &:hover {
-            text-decoration: underline;
+            border: 1px solid $primary;
           }
         }
       }
@@ -152,5 +173,11 @@ nav {
     padding-bottom: 0.25rem;
     margin-bottom: 0.5rem;
     border-bottom: 1px solid $primary-lt;
+  }
+  .auth-error {
+    margin-top: 0.6rem;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: $red-dark;
   }
 }

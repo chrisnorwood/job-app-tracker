@@ -1,28 +1,40 @@
 import React from 'react'
+import useForm from 'react-hook-form'
 import { handleLogin } from '../../services/auth'
 
 const Login = (props) => {
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    const values = {
-      email: event.target.email.value,
-      password: event.target.password.value,
-    }
-    console.log('Form submitted with: ', values)
-
-    handleLogin(values)
+  const { register, handleSubmit, errors } = useForm()
+  const onSubmit = data => {
+    console.log('Form submitted with: ', data)
+    handleLogin(data)
   }
 
   return (
     <div className='auth-box'>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className='form-field'>
           <label>Email</label>
-          <input type="text" name="email" placeholder="foo@bar.com" />
+          <input
+            type="text"
+            name="email"
+            placeholder="foo@bar.com"
+            ref={register({ required: true })}
+          />
+          <div className="auth-error">
+            {errors.email && 'Email is required.'}
+          </div>
         </div>
         <div className='form-field'>
           <label>Password</label>
-          <input type="password" name="password" placeholder="foobar" />
+          <input
+            type="password"
+            name="password"
+            placeholder="foobar"
+            ref={register({ required: true })}
+          />
+          <div className="auth-error">
+            {errors.password && 'Password is required.'}
+          </div>
         </div>
         <div>
           <input type="submit" value="Login" className="submit-btn"/>
