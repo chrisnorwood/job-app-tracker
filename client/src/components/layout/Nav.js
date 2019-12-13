@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { useAuth } from '../../contexts/AuthContext'
 
 const Nav = (props) => {
-  const { authState, dispatch } = useAuth();
+  const { authState } = useAuth();
 
   return (
     <nav>

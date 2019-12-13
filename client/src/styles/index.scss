@@ -191,3 +191,39 @@ nav {
     color: $red-dark;
   }
 }
+
+.apps-body {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem;
+  table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0 0.75rem; 
+    thead {
+      border-spacing: 0;
+      color: $black;
+      font-weight: bold;
+      text-align: left;
+      th {
+        padding: 0 1rem;
+      }
+    }
+    tbody {
+      tr {
+        background: white;
+        margin-bottom: 1rem;
+      }
+      td {
+        padding: 1rem;
+      }
+    }
+  }
+}
+
+.app-card {
+  margin: 0 auto 2rem 0;
+  background: white;
+  border-radius: 5px;
+  padding: 1rem;
+}
