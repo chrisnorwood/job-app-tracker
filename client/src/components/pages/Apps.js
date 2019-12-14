@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import { getApplications } from '../../services/api'
 import Table from '../Table'
+import AppDetails from '../AppDetails'
 
 const formatDate = (string) => {
   const options = {
@@ -24,6 +25,15 @@ const Apps = (props) => {
 
   const columns = useMemo(() => [
     {
+      Header: () => null,
+      id: 'expander',
+      Cell: ({ row }) => (
+        <span {...row.getExpandedToggleProps()}>
+          {row.isExpanded ? '👇' : '👉'}
+        </span>
+      ),
+    },
+    {
       Header: 'Date',
       accessor: 'createdAt',
       Cell: ({ cell: { value } }) => formatDate(value),
@@ -44,11 +54,22 @@ const Apps = (props) => {
 
   const memoedApps = useMemo(() => applications, [applications])
 
+  const renderExpandedRow = useCallback(
+    ({ row }) => (
+      <AppDetails application={ row.original }/>
+    ),
+    []
+  )
+
   if (!applications) return <span>Loading...</span>
 
   return (
     <div className="apps-body">
-      <Table columns={columns} data={memoedApps} />
+      <Table
+        columns={columns}
+        data={memoedApps}
+        renderExpandedRow={renderExpandedRow}
+      />
     </div>
   )
 }

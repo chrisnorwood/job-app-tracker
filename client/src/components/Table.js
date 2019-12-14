@@ -1,17 +1,21 @@
-import React from 'react'
-import { useTable } from 'react-table'
+import React, { Fragment } from 'react'
+import { useTable, useExpanded } from 'react-table'
 
-const Table = ({ columns, data }) => {
+const Table = ({ columns, data, renderExpandedRow }) => {
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     rows,
     prepareRow,
-  } = useTable({
-    columns,
-    data,
-  })
+    flatColumns,
+  } = useTable(
+    {
+      columns,
+      data,
+    },
+    useExpanded
+  )
 
   return (
     <table {...getTableProps()}>
@@ -29,11 +33,20 @@ const Table = ({ columns, data }) => {
           (row, i) => {
             prepareRow(row)
             return (
-              <tr {...row.getRowProps()}>
-                {row.cells.map(cell => {
-                  return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
-                })}
-              </tr>
+              <Fragment {...row.getRowProps()}>
+                <tr>
+                  {row.cells.map(cell => {
+                    return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                  })}
+                </tr>
+                {row.isExpanded ? (
+                  <tr>
+                    <td colSpan={flatColumns.length}>
+                      {renderExpandedRow({ row })}
+                    </td>
+                  </tr>
+                ) : null}
+              </Fragment>
             )
           }
         )}
