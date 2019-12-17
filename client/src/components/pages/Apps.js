@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import { getApplications } from '../../services/api'
-import Table from '../Table'
+import Table from '../Table2'
 import AppDetails from '../AppDetails'
 
 const formatDate = (string) => {
