@@ -17,3 +17,6 @@ app.use('/api', routes);
 app.listen(port, () => {
   console.log(`server started on port ${port}`);
 });
+
+// Must export the express server to be used in my supertest/jest tests
+module.exports = app;
