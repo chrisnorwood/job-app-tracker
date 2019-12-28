@@ -11,7 +11,6 @@
 
 ## Notes:
 * do not use the @babel/node library in production, see https://babeljs.io/docs/en/babel-node for prod. usage
-* @babel/... dependencies were added to root (server) package.json in order for jest to run
 
 ## References:
 * See the following tutorial for some insight onto the initial Sequelize/PostgreSQL setup: https://dev.to/nedsoft/getting-started-with-sequelize-and-postgres-emp
