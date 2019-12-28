@@ -10,8 +10,10 @@
     "dev-client": "yarn --cwd ./client run start",
     "console": "node --experimental-repl-await ./server/console.js",
     "migrate": "npx sequelize-cli db:migrate",
-    "migrate:reset": "npx sequelize-cli db:migrate:undo:all && npm run migrate",
-    "pretest": "cross-env NODE_ENV=test yarn run migrate:reset",
+    "migrate:reset": "npx sequelize-cli db:migrate:undo:all && yarn run migrate",
+    "prep-test-db": "yarn run migrate:reset && yarn run seed",
+    "seed": "npx sequelize-cli db:seed:all",
+    "pretest": "cross-env NODE_ENV=test yarn run prep-test-db",
     "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles"
   },
   "jest": {
