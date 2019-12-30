@@ -1,7 +1,8 @@
 const request = require('supertest');
-const app = require('../index.js');
+const app = require('../app.js');
 
 describe('User Endpoints', () => {
+
   it('should create a new user', async () => {
     const res = await request(app)
       .post('/api/auth/register')

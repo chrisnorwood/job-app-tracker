@@ -14,7 +14,7 @@
     "prep-test-db": "yarn run migrate:reset && yarn run seed",
     "seed": "npx sequelize-cli db:seed:all",
     "pretest": "cross-env NODE_ENV=test yarn run prep-test-db",
-    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles"
+    "test": "cross-env NODE_ENV=test jest --testTimeout=10000 --detectOpenHandles --forceExit"
   },
   "jest": {
     "testEnvironment": "node",
